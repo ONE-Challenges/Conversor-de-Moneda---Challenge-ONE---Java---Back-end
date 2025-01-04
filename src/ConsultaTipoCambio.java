@@ -21,4 +21,11 @@ public class ConsultaTipoCambio {
             throw new RuntimeException("No se pudo obtener el tipo de cambio. Detalles: " + e.getMessage());
         }
     }
+
+    public double obtenerTasa(TipoCambio tipoCambio, String moneda) {
+        if (!tipoCambio.conversion_rates().containsKey(moneda)) {
+            throw new IllegalArgumentException("Moneda no encontrada: " + moneda);
+        }
+        return tipoCambio.conversion_rates().get(moneda);
+    }
 }
